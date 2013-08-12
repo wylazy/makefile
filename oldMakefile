@@ -1,0 +1,13 @@
+CC = gcc
+
+main: main.o app.o func.o
+	$(CC) -o $@ $+
+
+main.o: header.h
+app.o: header.h
+
+clean:
+	@rm *.o
+	@find -type f -exec test -x {} \; -a -exec rm {} \;
+
+.PHONY: clean
